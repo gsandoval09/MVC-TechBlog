@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User } = require('../models');
 
 //create new user 
 router.post('/', async (req, res) => {
@@ -21,19 +21,20 @@ router.post('/', async (req, res) => {
     }
 });
 // find user with matching email
-const userData = await User.findOne({
-    where: {
-        email: require.body.email
-    }
-});
 
-if (!userData) {
-    res
-        .status(400)
-        .json({ message: 'Incorrect email or password, please try again' }
-        );
-    return;
-}
+// const userData = await User.findOne({
+//     where: {
+//         email: require.body.email
+//     }
+// });
+
+// if (!userData) {
+//     res
+//         .status(400)
+//         .json({ message: 'Incorrect email or password, please try again' }
+//         );
+//     return;
+// }
 //login
 router.post('/login', async (req, res) => {
     try {
@@ -72,15 +73,15 @@ router.post('/login', async (req, res) => {
     }
 });
 //verify password entered
-const validPassword = await userData.checkPassword(req.body.password);
+// const validPassword = await userData.checkPassword(req.body.password);
 
-if (!validPassword) {
-    res
-        .status(400)
-        .json({ message: 'Incorrect email or password, please try again' }
-        );
-    return;
-}
+// if (!validPassword) {
+//     res
+//         .status(400)
+//         .json({ message: 'Incorrect email or password, please try again' }
+//         );
+//     return;
+// }
 // create session based on log in credentials if stil logged in 
 
 // req.session.save(() => {
