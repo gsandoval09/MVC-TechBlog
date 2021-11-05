@@ -20,3 +20,5 @@ const newFormHandler = async (event) => {
         alert('Failed to create project');
       }
     };
+    
+    document.querySelector('#newpost').addEventListener("submit",newFormHandler)

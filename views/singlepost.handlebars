@@ -1,0 +1,30 @@
+<div class="post">
+    <Article class="card">
+        <h2>{{post.title}}</h2>
+        <div>{{post.User.username}}</div>
+        <div class="card-body">{{post.body}}</div>
+    </Article>
+    {{#if post.Comments}}
+    <section>
+        <div class="card-body">{{#each post.Comments}}>
+            <div>
+                {{body}}
+            </div>
+            {{/each}}
+        </div>
+    </section>
+    {{/if}}
+    <form id="newcomment">
+        <label> Comments </label>
+        <input type="text"
+        class="Comment"
+        value="{{post.id}}"
+        for="post-comment" />
+        <textarea name="comment-body"
+        cols="30" rows="10"> </textarea>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+{{!-- <script src="/js/" --}}
+{{!-- //link this to a new js file named comment// --}}
